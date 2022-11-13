@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="h-100 d-flex align-items-center justify-content-center">
+	<div class="card p-4" style="width: 22rem;">
+	{% if data.status == 'success' %}
+	<div class="alert alert-success text-center">
+		<strong>Sukces!</strong> Udało się zalogować
+	</div>
+	{% elif data.status == 'fail' %}
+	<div class="alert alert-danger text-center">
+		<strong>Błąd!</strong> Złe hasło lub login 
+	  </div>
+	{% endif %}
+	<form action="" method="POST">
+		<div class="text-center mb-3">
+		<!-- Email input -->
+		<div class="form-outline mb-4">
+			<input name="login" type="login" id="loginName" placeholder="Login" class="form-control" />
+		</div>
+
+		<!-- Password input -->
+		<div class="form-outline mb-4">
+			<input name="password" type="password" id="loginPassword" placeholder="Hasło" class="form-control" />
+		</div>
+
+
+		<!-- Submit button -->
+		<button type="submit" class="btn btn-primary btn-block mb-4">Zaloguj</button>
+
+		{% if data.query %}
+			<p>{{ data.query }}</p>
+		{% endif %}
+	</div>
+	</form>
+</div>
+{% endblock %}
